@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Phone, Mail } from 'lucide-react'
+import { Phone} from 'lucide-react'
 
 function FacebookIcon() {
   return (
