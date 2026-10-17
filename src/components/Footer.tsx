@@ -30,7 +30,6 @@ function TikTokIcon() {
 // ✏️ Datos de contacto y redes (los mismos de Contacto.tsx)
 const NUMERO_WHATSAPP = '51987654321'
 const TELEFONO_MOSTRAR = '+51 987 654 321'
-const CORREO = 'tapaythika@gmail.com'
 const FACEBOOK = 'https://www.facebook.com/tapay.thika.35'
 const INSTAGRAM = 'https://www.instagram.com/tapay_thika_oficial?xtok=Zjl4azB5YWwxN3Rm'
 const TIKTOK = 'https://www.tiktok.com/@tapaythika?_r=1&_t=ZS-9AcXM32gIx4'
@@ -40,7 +39,6 @@ const enlaces = [
   { to: '/sobre-nosotros', label: 'Sobre Nosotros' },
   { to: '/presentaciones', label: 'Presentaciones' },
   { to: '/directiva', label: 'Directiva' },
-  { to: '/galeria', label: 'Galería' },
   { to: '/contacto', label: 'Contacto' },
 ]
 
