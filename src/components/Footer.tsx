@@ -110,15 +110,6 @@ export default function Footer() {
                 <span>{TELEFONO_MOSTRAR}</span>
               </a>
             </li>
-            <li>
-              <a
-                href={`mailto:${CORREO}`}
-                className="flex items-start gap-2 text-sm text-gray-300 transition hover:text-yellow-500 sm:gap-3 sm:text-base"
-              >
-                <Mail className="mt-0.5 shrink-0 text-yellow-500" size={20} />
-                <span className="break-all">{CORREO}</span>
-              </a>
-            </li>
           </ul>
 
           <Link
