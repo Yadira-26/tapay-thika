@@ -55,36 +55,52 @@ export default function Inicio() {
   return (
     <div className="flex-1">
       {/* PORTADA CON VIDEO */}
-      <section className="relative flex min-h-[60vh] items-center overflow-hidden bg-black md:min-h-[75vh] lg:min-h-[85vh]">
-        <video
-          ref={videoRef}
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-          onCanPlay={() => setListo(true)}
-          className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ${
-            listo ? 'opacity-100' : 'opacity-0'
-          }`}
-        >
-          <source src="/videos/hero.mp4" type="video/mp4" />
-        </video>
+      <section className="relative flex flex-col bg-black md:min-h-[75vh] md:flex-row md:items-center md:overflow-hidden lg:min-h-[85vh]">
+        {/* Video (franja arriba en celular, fondo completo en computadora) */}
+        <div className="relative aspect-video w-full overflow-hidden md:absolute md:inset-0 md:aspect-auto">
+          <video
+            ref={videoRef}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            onCanPlay={() => setListo(true)}
+            className={`h-full w-full object-cover transition-opacity duration-1000 ${
+              listo ? 'opacity-100' : 'opacity-0'
+            }`}
+          >
+            <source src="/videos/hero.mp4" type="video/mp4" />
+          </video>
 
-        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/70 to-transparent" />
-        <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black to-transparent" />
+          <button
+            type="button"
+            onClick={alternarSonido}
+            aria-label={silenciado ? 'Activar sonido' : 'Silenciar'}
+            className="absolute bottom-3 right-3 z-10 flex h-10 w-10 items-center justify-center rounded-full border border-yellow-500 bg-black/60 text-yellow-500 transition hover:bg-yellow-500 hover:text-black md:bottom-6 md:right-6 md:h-12 md:w-12"
+          >
+            {silenciado ? <VolumeX size={20} /> : <Volume2 size={20} />}
+          </button>
+        </div>
 
+        {/* Degradados (solo computadora) */}
+        <div className="absolute inset-0 hidden bg-gradient-to-r from-black via-black/70 to-transparent md:block" />
+        <div className="absolute inset-x-0 bottom-0 hidden h-32 bg-gradient-to-t from-black to-transparent md:block" />
+
+        {/* Texto */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="relative w-full px-6 md:px-12 lg:px-20"
+          className="relative w-full px-6 py-10 md:px-12 md:py-0 lg:px-20"
         >
           <p className="mb-4 text-sm tracking-[0.3em] text-yellow-500">BIENVENIDOS A</p>
-          <h1 className="text-6xl font-bold italic text-white md:text-8xl">Tapay Thika</h1>
-          <p className="mt-2 text-lg tracking-[0.5em] text-white">AGRUPACIÓN DE DANZAS</p>
+          <h1 className="text-5xl font-bold italic text-white md:text-8xl">Tapay Thika</h1>
+          <p className="mt-2 text-sm tracking-[0.3em] text-white md:text-lg md:tracking-[0.5em]">
+            AGRUPACIÓN DE DANZAS
+          </p>
 
-          <h2 className="mt-10 text-3xl text-white md:text-4xl">
+          <h2 className="mt-6 text-2xl text-white md:mt-10 md:text-4xl">
             Nuestra cultura vive <br />
             <span className="italic text-yellow-500">en cada paso</span>
           </h2>
@@ -102,20 +118,12 @@ export default function Inicio() {
           </Link>
         </motion.div>
 
-        <button
-          type="button"
-          onClick={alternarSonido}
-          aria-label={silenciado ? 'Activar sonido' : 'Silenciar'}
-          className="absolute bottom-6 right-6 z-10 flex h-12 w-12 items-center justify-center rounded-full border border-yellow-500 bg-black/60 text-yellow-500 transition hover:bg-yellow-500 hover:text-black"
-        >
-          {silenciado ? <VolumeX size={22} /> : <Volume2 size={22} />}
-        </button>
-
+        {/* Flechita (solo computadora) */}
         <button
           type="button"
           onClick={bajar}
           aria-label="Bajar"
-          className="absolute bottom-6 left-1/2 z-10 -translate-x-1/2 animate-bounce text-yellow-500"
+          className="absolute bottom-6 left-1/2 z-10 hidden -translate-x-1/2 animate-bounce text-yellow-500 md:block"
         >
           <ChevronDown size={36} />
         </button>
