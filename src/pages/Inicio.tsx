@@ -39,6 +39,7 @@ const hitos = [
 export default function Inicio() {
   const videoRef = useRef<HTMLVideoElement>(null)
   const [silenciado, setSilenciado] = useState(true)
+  const [listo, setListo] = useState(false)
 
   function alternarSonido() {
     if (!videoRef.current) return
@@ -54,7 +55,7 @@ export default function Inicio() {
   return (
     <div className="flex-1">
       {/* PORTADA CON VIDEO */}
-      <section className="relative flex min-h-[85vh] items-center overflow-hidden">
+      <section className="relative flex min-h-[85vh] items-center overflow-hidden bg-black">
         <video
           ref={videoRef}
           autoPlay
@@ -62,8 +63,10 @@ export default function Inicio() {
           loop
           playsInline
           preload="auto"
-          poster="/images/hero.jpg"
-          className="absolute inset-0 h-full w-full object-cover"
+          onCanPlay={() => setListo(true)}
+          className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ${
+            listo ? 'opacity-100' : 'opacity-0'
+          }`}
         >
           <source src="/videos/hero.mp4" type="video/mp4" />
         </video>
@@ -183,6 +186,26 @@ export default function Inicio() {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
+          <h2 className="text-4xl italic text-white md:text-5xl">
+            Nuestra cultura vive <span className="text-yellow-500">en cada paso</span>
+          </h2>
+          <p className="mx-auto mt-5 max-w-lg text-gray-300">
+            Descubre nuestras presentaciones o invítanos a tu próximo evento.
+          </p>
+          <div className="mt-10 flex flex-wrap justify-center gap-4">
+            <Link
+              to="/presentaciones"
+              className="inline-flex items-center gap-3 rounded-full bg-yellow-500 px-7 py-3 font-semibold text-black transition hover:bg-yellow-400"
+            >
+              Ver presentaciones <ArrowRight size={18} />
+            </Link>
+            <Link
+              to="/contacto"
+              className="inline-flex items-center gap-3 rounded-full border border-yellow-500 px-7 py-3 font-semibold text-yellow-500 transition hover:bg-yellow-500 hover:text-black"
+            >
+              Contáctanos
+            </Link>
+          </div>
         </motion.div>
       </section>
     </div>
