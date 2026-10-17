@@ -55,7 +55,7 @@ export default function Inicio() {
   return (
     <div className="flex-1">
       {/* PORTADA CON VIDEO */}
-      <section className="relative flex min-h-[85vh] items-center overflow-hidden bg-black">
+      <section className="relative flex min-h-[60vh] items-center overflow-hidden bg-black md:min-h-[75vh] lg:min-h-[85vh]">
         <video
           ref={videoRef}
           autoPlay
